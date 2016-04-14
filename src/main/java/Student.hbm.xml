@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ 
+ <hibernate-mapping>
+ 	<class name="com.studenttest.pojos.StudentPojo" table="Student">
+ 		<id name="id" column="Student_id" type="int">
+ 			<generator class="native"></generator>
+ 		</id>
+ 		<property name="Name" column ="Student_name" type="string"></property>
+ 		<property name="Semester" column="semester" type="string"></property>
+ 		<one-to-one name="usn" class="com.studenttest.pojos.Usn" cascade="all"></one-to-one>
+ 		<set name="Subjects" cascade="all">
+ 			<key column="Student_id"></key>
+ 			<many-to-many class="com.studenttest.pojos.Subject" column="Subject_id"></many-to-many>
+ 		</set>
+ 		<set name="Courses" cascade="save-update" sort="com.studenttest.Logic.MyComp">
+ 			<key column="Student_id"></key>
+ 			<one-to-many class="com.studenttest.pojos.ExtraCourses"/>
+ 		</set>
+ 	</class>
+ 	
+ 	<class name="com.studenttest.pojos.Usn" table="USN">
+ 		<id name="usn_id" type="int" column="usn_id">
+ 			<generator class="foreign">
+ 				<param name="property">student</param>
+ 			</generator>
+ 		</id>
+ 		<one-to-one name="student" class="com.studenttest.pojos.StudentPojo" constrained="true"></one-to-one>
+ 		<property name="usn" column="usn" type="string"></property>
+ 	</class>
+ 	
+ 	<class name="com.studenttest.pojos.Subject" table="Subjects">
+ 		<id name="sub_id" column="subject_id" type="int">
+ 			<generator class="native"></generator>
+ 		</id>
+ 		<property name="name" column="course_name" type="string"></property>
+ 		<property name="coursePoints" column="course_points" type="int"></property>
+ 	</class>
+ 	
+ 	<class name="com.studenttest.pojos.ExtraCourses" table="ExtraCourses">
+ 		<id name="id" type="int" column="Course_id">
+ 			<generator class="native"></generator>
+ 		</id>
+ 		<property name="courseName" column="Course_name" type="string"></property>
+ 	</class>
+ 
+ </hibernate-mapping>

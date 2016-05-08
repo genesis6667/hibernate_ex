@@ -2,8 +2,6 @@ package com.studenttest.Logic;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.TreeSet;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +11,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.studenttest.pojos.ExtraCourses;
 import com.studenttest.pojos.StudentPojo;
 
 public class MultipleSchemaTester {
@@ -38,17 +35,6 @@ public class MultipleSchemaTester {
 		StudentPojo student2 = (StudentPojo) context.getBean("student2");
 		StudentPojo student3 = (StudentPojo) context.getBean("student3");
 		
-
-		ExtraCourses courses1 = new ExtraCourses("Lam");
-		ExtraCourses courses2 = new ExtraCourses("San");
-		ExtraCourses courses3 = new ExtraCourses("Den");
-
-		TreeSet<ExtraCourses> set3 = new TreeSet<ExtraCourses>();
-		set3.add(courses1);
-		set3.add(courses2);
-		set3.add(courses3);
-		
-		student3.setCourses(set3);
 		// College college = new College("ABC");
 		multipleSchemaTester.addToDb(student1);
 		multipleSchemaTester.addToDb(student2);

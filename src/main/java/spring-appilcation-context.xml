@@ -4,11 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-    
-   <bean id="extraCourse1" class="com.studenttest.pojos.ExtraCourses">
-   </bean>
-   
-   
+
   		<!-- Subject beans --> 
   		
   	
@@ -106,6 +102,22 @@
       		</property>
       	</bean>
       </property>
+      <property name="Courses">
+      <set>
+      	<bean id="extraCourse1" class="com.studenttest.pojos.ExtraCourses">
+   			<constructor-arg index="0" value="Lam"></constructor-arg>
+   		</bean>
+   		<bean id="extraCourse2" class="com.studenttest.pojos.ExtraCourses">
+   			<constructor-arg index="0" value="San"></constructor-arg>
+   		</bean>
+   		<bean id="extraCourse3" class="com.studenttest.pojos.ExtraCourses">
+   			<constructor-arg index="0" value="Den"></constructor-arg>
+   		</bean>
+   		<bean id="extraCourse4" class="com.studenttest.pojos.ExtraCourses">
+   			<constructor-arg index="0" value="Ass"></constructor-arg>
+   		</bean>
+      </set>
+     </property>
    </bean>
 
 </beans>
